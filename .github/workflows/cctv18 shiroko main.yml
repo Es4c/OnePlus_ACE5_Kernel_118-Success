@@ -215,7 +215,6 @@ jobs:
           
       - name: 添加 BBR 等一系列拥塞控制算法
         run: |
-#          if [[ "${{ github.event.inputs.bbr_enable }}" == "true" || "${{ github.event.inputs.bbr_enable }}" == "default" ]]; then
           echo "正在添加BBR等拥塞控制算法..."
           cd kernel_workspace
           #开启TCP拥塞控制算法控制器（必需）
@@ -251,7 +250,6 @@ jobs:
           else
             echo "CONFIG_DEFAULT_TCP_CONG=cubic" >> ./common/arch/arm64/configs/gki_defconfig
           fi
-#          fi
 
       - name: 启用三星SSG IO调度器
         run: |
