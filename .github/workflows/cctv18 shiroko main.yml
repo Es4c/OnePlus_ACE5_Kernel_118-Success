@@ -212,7 +212,14 @@ jobs:
           fi
           #禁用 defconfig 检查
           sed -i 's/check_defconfig//' ./common/build.config.gki
-          
+      
+      - name: BBR v1 -> BBR v3
+        run: |
+          echo "正在添加 BBR v3 支持..."
+          # 下载最新的 tcp_bbr.c (BBR v3)
+          curl -L -o ./common/net/ipv4/tcp_bbr.c \
+            https://raw.githubusercontent.com/google/bbr/v3/net/ipv4/tcp_bbr.c
+            
       - name: 添加 BBR 等一系列拥塞控制算法
         run: |
           echo "正在添加BBR等拥塞控制算法..."
@@ -250,6 +257,7 @@ jobs:
           else
             echo "CONFIG_DEFAULT_TCP_CONG=cubic" >> ./common/arch/arm64/configs/gki_defconfig
           fi
+          
 
       - name: 启用三星SSG IO调度器
         run: |
