@@ -111,8 +111,9 @@ jobs:
           
       - name: BBR v1 -> BBR v3
         run: |
-          if [ -f "common/net/ipv4/tcp_bbr.c" ]; then
-              echo "✓ common/net/ipv4/tcp_bbr.c 文件存在"
+          cd kernel_workspace
+          if [ -f "./common/net/ipv4/tcp_bbr.c" ]; then
+              echo "✓ ./common/net/ipv4/tcp_bbr.c 文件存在"
           fi
           echo "正在将BBR v1 升级为 BBR v3 ..."
           # 下载最新的 tcp_bbr.c (BBR v3)
