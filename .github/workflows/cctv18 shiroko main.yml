@@ -117,7 +117,7 @@ jobs:
           fi
           echo "正在将BBR v1 升级为 BBR v3 ..."
           # 下载最新的 tcp_bbr.c (BBR v3)
-          curl -L -o common/net/ipv4/tcp_bbr.c \
+          curl -L -o ./common/net/ipv4/tcp_bbr.c \
             https://raw.githubusercontent.com/google/bbr/v3/net/ipv4/tcp_bbr.c
 
       - name: 添加 SukiSU-Ultra
