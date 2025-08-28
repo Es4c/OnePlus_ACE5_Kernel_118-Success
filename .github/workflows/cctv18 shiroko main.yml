@@ -108,17 +108,6 @@ jobs:
             sed -i 's/ -dirty//g' "$f"
             sed -i '$i res=$(echo "$res" | sed '\''s/-dirty//g'\'')' "$f"
           done
-          
-      - name: BBR v1 -> BBR v3
-        run: |
-          cd kernel_workspace
-          if [ -f "./common/net/ipv4/tcp_bbr.c" ]; then
-              echo "✓ ./common/net/ipv4/tcp_bbr.c 文件存在"
-          fi
-          echo "正在将BBR v1 升级为 BBR v3 ..."
-          # 下载最新的 tcp_bbr.c (BBR v3)
-          curl -L -o ./common/net/ipv4/tcp_bbr.c \
-            https://raw.githubusercontent.com/google/bbr/v3/net/ipv4/tcp_bbr.c
 
       - name: 添加 SukiSU-Ultra
         id: ksu_version
