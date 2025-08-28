@@ -44,7 +44,7 @@ on:
         description: "是否启用bbr算法(优化上行数据,对手机日用无太大意义甚至可能负优化;false关闭,true仅加入算法,default设为默认)"
         required: true
         type: choice
-        default: 'false'
+        default: 'true'
         options:
           - 'false'
           - 'true'
@@ -111,12 +111,12 @@ jobs:
           
       - name: BBR v1 -> BBR v3
         run: |
-          if [ -f "./common/net/ipv4/tcp_bbr.c" ]; then
-              echo "✓ ./common/net/ipv4/tcp_bbr.c 文件存在"
+          if [ -f "common/net/ipv4/tcp_bbr.c" ]; then
+              echo "✓ common/net/ipv4/tcp_bbr.c 文件存在"
           fi
           echo "正在将BBR v1 升级为 BBR v3 ..."
           # 下载最新的 tcp_bbr.c (BBR v3)
-          curl -L -o ./common/net/ipv4/tcp_bbr.c \
+          curl -L -o common/net/ipv4/tcp_bbr.c \
             https://raw.githubusercontent.com/google/bbr/v3/net/ipv4/tcp_bbr.c
 
       - name: 添加 SukiSU-Ultra
