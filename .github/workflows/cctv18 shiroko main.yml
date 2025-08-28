@@ -109,12 +109,6 @@ jobs:
             sed -i '$i res=$(echo "$res" | sed '\''s/-dirty//g'\'')' "$f"
           done
           
-      - name: 应用 BBRv3 补丁
-        run: |
-          echo "正在添加BBRv3补丁..."
-          cd kernel_workspace/common
-          curl -LSs "https://raw.githubusercontent.com/zxcvbnmv/testnano/refs/heads/main/PATCH/BBRv3/010-bbr3-0016-net-tcp_bbr-v3-update-TCP-bbr-congestion-control-mod.patch" | git apply --ignore-whitespace -p1
-
       - name: 添加 SukiSU-Ultra
         id: ksu_version
         run: |
